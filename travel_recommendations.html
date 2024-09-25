@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelFocus - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            background: url('sidney.jpg') no-repeat center center fixed; /* Substitua pelo seu caminho de imagem de fundo */
+            background-size: cover;
+        }
+        .navbar {
+            background: linear-gradient(to right, #004080, #00aaff);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .links {
+            flex-grow: 1; /* Faz com que os links ocupem o espaço restante */
+            display: flex;
+            justify-content: center; /* Centraliza os links */
+            gap: 20px; /* Espaçamento entre os links */
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .navbar .logo {
+            max-height: 40px; /* Ajuste a altura do logo conforme necessário */
+            margin: 0;
+        }
+
+    
+        .navbar .search-container {
+            display: flex;
+            align-items: center;
+            margin-left: auto; /* Alinha a barra de busca à direita */
+        }
+
+        .navbar input[type="text"] {
+    padding: 10px 20px; /* Aumenta o padding para que o campo tenha mais altura */
+    border: none; /* Remove bordas padrão */
+    border-radius: 20px; /* Deixa as bordas arredondadas */
+    outline: none; /* Remove o contorno ao focar */
+    background-color: #00aaff; /* Altera o fundo para azul claro */
+    color: white; /* Cor do texto branco */
+    font-size: 16px; /* Tamanho da fonte do texto */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacar o campo */
+}
+
+.navbar input[type="text"]::placeholder {
+    color: white; /* Cor do texto do placeholder branco */
+}
+ 
+        
+        
+        .navbar button {
+            margin-left: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+            color: #004080;
+            cursor: pointer;
+        }
+        .navbar button:hover {
+            background-color: #e0e0e0;
+        }
+        .container {
+    
+    justify-content: flex-start; /* Mantém o alinhamento à esquerda */
+    align-items: center;
+    height: 100vh;
+    padding: 70px 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+h1 {
+    font-size: 64px; /* Tamanho do texto */
+    margin: 0; /* Remove margens padrão */
+    margin-bottom: 20px; /* Espaço entre o h1 e o p */
+    margin-top: 10px; /* Move o h1 para cima */
+    margin-left: 130px; /* Move o h1 para a direita */
+    display: block; /* Garante que o h1 seja tratado como bloco */
+}
+
+p {
+    font-size: 16px; /* Tamanho do parágrafo */
+    margin: 0; /* Remove margens padrão */
+    max-width: 800px; /* Limitar a largura do parágrafo */
+    margin-top: 20px; /* Espaço entre o h1 e o p */
+    margin-bottom: 40px; /* Espaço entre o p e o botão */
+    margin-left: 130px; /* Move o p para a direita */
+    display: block; /* Garante que o p seja tratado como bloco */
+}
+
+.book-now {
+    margin-left: 130px; /* Move o botão para a direita */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    background: linear-gradient(to right, #0066cc, #3399ff); /* Gradiente igual ao da navbar */
+    color: white; /* Cor do texto do botão */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+    transition: background 0.3s; /* Efeito de transição */
+}
+
+.book-now:hover {
+    background: linear-gradient(to right, #0055a5, #228bcc); /* Gradiente ao passar o mouse */
+}
+
+
+
+.social-media-icons {
+    position: fixed; /* Fixa a posição dos ícones na tela */
+    left: 20px; /* Distância da esquerda */
+    top: 180px; /* Distância do topo */
+    display: flex;
+    flex-direction: column; /* Alinha os ícones em coluna */
+    gap: 20px; /* Espaçamento entre os ícones */
+}
+
+.social-media-icons a {
+    color: white; /* Cor padrão dos ícones */
+    font-size: 24px; /* Tamanho do ícone */
+    transition: color 0.3s; /* Efeito suave para a transição de cor */
+}
+
+.social-media-icons a:hover {
+    color: #00aaff; /* Cor ao passar o mouse */
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <img src="logo.png" alt="Logo" class="logo"> <!-- Insira aqui o caminho para o seu logo -->
+        <span style="color: white; font-size: 24px; margin-left: 25px;">Travel Recommendation</span>
+        <div class="links">
+            <a href="home.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search recommendations..." />
+            <button type="button">Search</button>
+            <button type="button">Reset</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>WELCOME TO <br> TRAVEL <br> RECOMMENDATION</h1>
+        <p>Your ultimate travel companion! Here,<br> you’ll find top recommendations for destinations,<br> tips, and guides to help you explore the world with ease.<br> Discover new adventures, experience different cultures,<br> and make unforgettable memories.<br> Let's embark on this journey together!</p>
+        <button class="book-now">Book Now</button>
+    </div>
+
+    <div class="social-media-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com" target="_blank"><i class="fab fa-x"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+    
+
+</body>
+</html>
