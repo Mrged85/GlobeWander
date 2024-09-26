@@ -1,3 +1,6 @@
+// Variável global para armazenar os dados
+let travelData = null;
+
 // Função para buscar dados do arquivo JSON
 const fetchTravelData = async () => {
     try {
@@ -6,14 +9,11 @@ const fetchTravelData = async () => {
             throw new Error('Network response was not ok ' + response.statusText);
         }
 
-        const data = await response.json(); // Converte a resposta em JSON
-        console.log(data); // Exibe os dados no console
+        travelData = await response.json(); // Armazena os dados na variável global
+        console.log(travelData); // Exibe os dados no console
 
         // Armazena os dados no localStorage para pesquisa
-        localStorage.setItem('travelData', JSON.stringify(data)); // Salva os dados para pesquisa futura
-
-        // Chama a função para exibir os dados
-        displayTravelData(data); // Certifique-se de que "data" contém a estrutura esperada
+        localStorage.setItem('travelData', JSON.stringify(travelData)); // Salva os dados para pesquisa futura
     } catch (error) {
         console.error('Houve um problema com a operação de fetch:', error);
     }
@@ -107,14 +107,13 @@ document.getElementById('search-button').addEventListener('click', () => {
     const query = document.getElementById('search-input').value.toLowerCase();
     const resultsContainer = document.getElementById('results-container');
     resultsContainer.innerHTML = ''; // Limpa resultados anteriores
-    const data = JSON.parse(localStorage.getItem('travelData')); // Obtém os dados do localStorage
 
-    if (data) {
+    if (travelData) {
         const filteredResults = [];
 
         // Filtra os resultados
-        if (Array.isArray(data.countries)) {
-            data.countries.forEach(country => {
+        if (Array.isArray(travelData.countries)) {
+            travelData.countries.forEach(country => {
                 if (Array.isArray(country.cities)) {
                     country.cities.forEach(city => {
                         if (city.name.toLowerCase().includes(query)) {
@@ -126,8 +125,8 @@ document.getElementById('search-button').addEventListener('click', () => {
         }
 
         // Adiciona os templos filtrados
-        if (Array.isArray(data.temples)) {
-            data.temples.forEach(temple => {
+        if (Array.isArray(travelData.temples)) {
+            travelData.temples.forEach(temple => {
                 if (temple.name.toLowerCase().includes(query)) {
                     filteredResults.push(temple);
                 }
@@ -135,8 +134,8 @@ document.getElementById('search-button').addEventListener('click', () => {
         }
 
         // Adiciona as praias filtradas
-        if (Array.isArray(data.beaches)) {
-            data.beaches.forEach(beach => {
+        if (Array.isArray(travelData.beaches)) {
+            travelData.beaches.forEach(beach => {
                 if (beach.name.toLowerCase().includes(query)) {
                     filteredResults.push(beach);
                 }

@@ -127,7 +127,7 @@
             right: 20px; /* Ajuste a distância da borda direita */
             width: 300px; /* Largura do container */
             max-height: 500px; /* Altura máxima */
-            background-color: rgba((218, 223, 225);, 1); /* Fundo branco com transparência */
+            background-color: rgba((218, 223, 225), 1); /* Fundo branco com transparência */
             border: 0px solid #ccc; /* Borda leve */
             border-radius: 10px; /* Cantos arredondados */
             padding: 15px; /* Aumenta o espaçamento interno */
@@ -144,9 +144,7 @@
             border-radius: 5px; /* Cantos arredondados */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
             text-align: center; /* Centraliza o texto dentro da caixa */
-        
         }
-
 
         .result-item img {
             width: 100%; /* Imagem ocupa toda a largura da caixa */
@@ -166,6 +164,23 @@
             text-align: center; /* Centraliza o texto do parágrafo */
             margin: 5px 0; /* Margem para separar do título e da caixa */
             font-size: 14px; /* Ajuste o tamanho do texto, se necessário */
+        }
+
+        /* Estilo para o botão "Visit" */
+        .visit-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .visit-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -193,8 +208,13 @@
     </div>
 
     <div id="results-container" class="results-container">
+        <div class="result-item">
+            <img src="path_to_image.jpg" alt="Sydney, Australia">
+            <h4>Sydney, Australia</h4>
+            <p>A beautiful coastal city with a relaxed atmosphere, featuring the Sydney Opera House, Harbour Bridge, and stunning beaches.</p>
+            <a href="link_to_visit_page.html" class="visit-button">Visit</a>
+        </div>
     </div> <!-- Contêiner para resultados da pesquisa -->
-
 
     <div class="social-media-icons">
         <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -206,3 +226,4 @@
     <script src="travel_recommendation.js"></script>
 </body>
 </html>
+
