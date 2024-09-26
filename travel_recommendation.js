@@ -5,9 +5,12 @@ const fetchTravelData = async () => {
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
         }
-        
+
         const data = await response.json(); // Converte a resposta em JSON
         console.log(data); // Exibe os dados no console
+
+        // Armazena os dados no localStorage para pesquisa
+        localStorage.setItem('travelData', JSON.stringify(data)); // Salva os dados para pesquisa futura
 
         // Chama a função para exibir os dados
         displayTravelData(data); // Certifique-se de que "data" contém a estrutura esperada
@@ -18,58 +21,146 @@ const fetchTravelData = async () => {
 
 // Função para exibir os dados no HTML
 const displayTravelData = (data) => {
-    const countriesContainer = document.getElementById('countries'); // O container para os países
-    const templesContainer = document.getElementById('temples'); // O container para os templos
-    const beachesContainer = document.getElementById('beaches'); // O container para as praias
+    const resultsContainer = document.getElementById('results-container');
+    resultsContainer.innerHTML = ''; // Limpa resultados anteriores
+    resultsContainer.style.display = 'block'; // Exibe o container
 
     // Exibe os países e suas cidades
     if (Array.isArray(data.countries)) { // Verifica se é um array
         data.countries.forEach(country => {
-            const countryElement = document.createElement('div');
-            countryElement.innerHTML = `<h2>${country.name}</h2>`;
-            
             if (Array.isArray(country.cities)) { // Verifica se "cities" é um array
                 country.cities.forEach(city => {
-                    const cityElement = document.createElement('div');
-                    cityElement.innerHTML = `
-                        <h3>${city.name}</h3>
-                        <img src="${city.imageUrl}" alt="${city.name}" />
-                        <p>${city.description}</p>
-                    `;
-                    countryElement.appendChild(cityElement);
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'result-item';
+
+                    const image = document.createElement('img');
+                    image.src = city.imageUrl; // Caminho da imagem
+                    image.alt = city.name;
+
+                    const title = document.createElement('h4');
+                    title.textContent = city.name;
+
+                    const description = document.createElement('p');
+                    description.textContent = city.description;
+
+                    resultItem.appendChild(image);
+                    resultItem.appendChild(title);
+                    resultItem.appendChild(description);
+                    resultsContainer.appendChild(resultItem);
                 });
             }
-            
-            countriesContainer.appendChild(countryElement);
         });
     }
 
     // Exibe os templos
     if (Array.isArray(data.temples)) { // Verifica se "temples" é um array
         data.temples.forEach(temple => {
-            const templeElement = document.createElement('div');
-            templeElement.innerHTML = `
-                <h3>${temple.name}</h3>
-                <img src="${temple.imageUrl}" alt="${temple.name}" />
-                <p>${temple.description}</p>
-            `;
-            templesContainer.appendChild(templeElement);
+            const resultItem = document.createElement('div');
+            resultItem.className = 'result-item';
+
+            const image = document.createElement('img');
+            image.src = temple.imageUrl; // Caminho da imagem
+            image.alt = temple.name;
+
+            const title = document.createElement('h4');
+            title.textContent = temple.name;
+
+            const description = document.createElement('p');
+            description.textContent = temple.description;
+
+            resultItem.appendChild(image);
+            resultItem.appendChild(title);
+            resultItem.appendChild(description);
+            resultsContainer.appendChild(resultItem);
         });
     }
 
     // Exibe as praias
     if (Array.isArray(data.beaches)) { // Verifica se "beaches" é um array
         data.beaches.forEach(beach => {
-            const beachElement = document.createElement('div');
-            beachElement.innerHTML = `
-                <h3>${beach.name}</h3>
-                <img src="${beach.imageUrl}" alt="${beach.name}" />
-                <p>${beach.description}</p>
-            `;
-            beachesContainer.appendChild(beachElement);
+            const resultItem = document.createElement('div');
+            resultItem.className = 'result-item';
+
+            const image = document.createElement('img');
+            image.src = beach.imageUrl; // Caminho da imagem
+            image.alt = beach.name;
+
+            const title = document.createElement('h4');
+            title.textContent = beach.name;
+
+            const description = document.createElement('p');
+            description.textContent = beach.description;
+
+            resultItem.appendChild(image);
+            resultItem.appendChild(title);
+            resultItem.appendChild(description);
+            resultsContainer.appendChild(resultItem);
         });
     }
 };
 
-// Chama a função para buscar os dados ao carregar a página
-fetchTravelData();
+// Chama a função para buscar os dados quando a página carrega
+window.onload = fetchTravelData;
+
+// Adiciona a funcionalidade de pesquisa
+document.getElementById('search-button').addEventListener('click', () => {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const resultsContainer = document.getElementById('results-container');
+    resultsContainer.innerHTML = ''; // Limpa resultados anteriores
+    const data = JSON.parse(localStorage.getItem('travelData')); // Obtém os dados do localStorage
+
+    if (data) {
+        const filteredResults = [];
+
+        // Filtra os resultados
+        if (Array.isArray(data.countries)) {
+            data.countries.forEach(country => {
+                if (Array.isArray(country.cities)) {
+                    country.cities.forEach(city => {
+                        if (city.name.toLowerCase().includes(query)) {
+                            filteredResults.push(city);
+                        }
+                    });
+                }
+            });
+        }
+
+        // Adiciona os templos filtrados
+        if (Array.isArray(data.temples)) {
+            data.temples.forEach(temple => {
+                if (temple.name.toLowerCase().includes(query)) {
+                    filteredResults.push(temple);
+                }
+            });
+        }
+
+        // Adiciona as praias filtradas
+        if (Array.isArray(data.beaches)) {
+            data.beaches.forEach(beach => {
+                if (beach.name.toLowerCase().includes(query)) {
+                    filteredResults.push(beach);
+                }
+            });
+        }
+
+        // Exibe os resultados filtrados
+        filteredResults.forEach(item => {
+            const resultItem = document.createElement('div');
+            resultItem.classList.add('result-item');
+            resultItem.innerHTML = `
+                <img src="${item.imageUrl}" alt="${item.name}" />
+                <h4>${item.name}</h4>
+                <p>${item.description}</p>
+            `;
+            resultsContainer.appendChild(resultItem);
+        });
+
+        resultsContainer.style.display = filteredResults.length ? 'block' : 'none'; // Mostra ou oculta resultados
+    }
+});
+
+// Adiciona a funcionalidade de redefinir a pesquisa
+document.getElementById('reset-button').addEventListener('click', () => {
+    document.getElementById('search-input').value = ''; // Limpa o campo de pesquisa
+    document.getElementById('results-container').style.display = 'none'; // Oculta resultados
+});
