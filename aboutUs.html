@@ -11,7 +11,7 @@
             padding: 0;
             font-family: Arial, sans-serif;
             color: white;
-            background: url('sidney.jpg') no-repeat center center fixed;
+            background: url('./images/sidney.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 
@@ -23,7 +23,7 @@
         }
 
         .navbar .links {
-            flex-grow: 1; /* Faz com que os links ocupem o espaço restante */
+            flex-grow: 0.7; /* Faz com que os links ocupem o espaço restante */
             display: flex;
             justify-content: center; /* Centraliza os links */
             gap: 20px; /* Espaçamento entre os links */
@@ -39,39 +39,11 @@
         }
 
     
-        .navbar .search-container {
-            display: flex;
-            align-items: center;
-            margin-left: auto; /* Alinha a barra de busca à direita */
-        }
-        .navbar input[type="text"] {
-    padding: 10px 20px; /* Aumenta o padding para que o campo tenha mais altura */
-    border: none; /* Remove bordas padrão */
-    border-radius: 20px; /* Deixa as bordas arredondadas */
-    outline: none; /* Remove o contorno ao focar */
-    background-color: #00aaff; /* Altera o fundo para azul claro */
-    color: white; /* Cor do texto branco */
-    font-size: 16px; /* Tamanho da fonte do texto */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacar o campo */
-}
-
+        
 .navbar input[type="text"]::placeholder {
     color: white; /* Cor do texto do placeholder branco */
 }
-
-        .navbar button {
-            margin-left: 5px;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: white;
-            color: #004080;
-            cursor: pointer;
-        }
-        .navbar button:hover {
-            background-color: #e0e0e0;
-        }
-     
+    
         /* Centraliza o conteúdo na tela */
         .container {
             display: flex;
@@ -101,47 +73,49 @@
             margin: 0;
         }
 
-        /* Formulário */
-        .form-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
+        .team-container {
+            background-color: rgba(255, 255, 255, 0.1); /* Background of the container */
+            padding: 10px; /* Inner spacing */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            display: flex; /* Uses flexbox for horizontal layout */
+            justify-content: space-around; /* Even spacing between members */
+            width: 100%; /* Full width of the container */
+            max-width: 800px; /* Maximum width of the container */
         }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .team-member {
+            text-align: center; /* Centers text within each member */
+            margin: 0 20px; /* Horizontal spacing between members */
+            margin-top: 50px;
+            margin-right: 30px;
         }
-
-        input, textarea {
-            padding: 15px;
-            border-radius: 5px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 16px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
+        h2 {
+            text-align: center; /* Center aligns the title */
+            width: 100%; /* Full width for the title */
+            font-size: 60px;
+            margin-top: 30px;
+            margin-right: 40px;
         }
-
-        input::placeholder, textarea::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+        .member-name {
+            font-weight: bold; /* Bold name */
         }
-
-        input[type="submit"] {
-            background: #5F9EA0;
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s;
+        .member-role {
+            background-color: #007bff; /* Button background color */
+            color: white; /* Button text color */
+            padding: 8px 12px; /* Button padding */
+            border: none; /* Removes border */
+            border-radius: 4px; /* Rounded corners for button */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth background color change */
+            margin-top: 5px; /* Spacing above the button */
+            display: inline-block; /* Allows margin to be applied */
         }
-
-        input[type="submit"]:hover {
-            background: linear-gradient(to right, #0055a5, #228bcc);
+        .member-role:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+        .icon {
+            font-size: 30px; /* Icon size */
+            color: #3498db; /* Icon color */
         }
 
         .social-media-icons {
@@ -184,35 +158,40 @@
 <body>
 
     <div class="navbar">
-        <img src="logo.png" alt="Logo" class="logo"> <!-- Insira aqui o caminho para o seu logo -->
+        <img src="./images/logo.png" alt="Logo" class="logo"> <!-- Insira aqui o caminho para o seu logo -->
         <span style="color: white; font-size: 24px; margin-left: 25px;">Travel Recommendation</span>
         <div class="links">
             <a href="home.html">Home</a>
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact Us</a>
         </div>
-        <div class="search-container">
-            <input type="text" placeholder="Search recommendations..." />
-            <button type="button">Search</button>
-            <button type="button">Reset</button>
-        </div>
     </div>
 
     <div class="container">
         <div class="contact-text">
-            <h1>CONTACT US</h1>
-            <p>Get in touch</p>
+            <h1>ABOUT US</h1>
+            <p>Click on Us</p>
         </div>
-        <div class="form-container">
-            <form>
-                <input type="text" placeholder="Name" required />
-                <input type="email" placeholder="Email" required />
-                <textarea placeholder="Message" rows="4" required></textarea>
-                <input type="submit" value="Submit" />
-            </form>
-        </div>
-    </div>
 
+    <div class="team-container">
+    <h2>OUR<br>TEAM</h2>
+    <div class="team-member">
+        <div class="icon"><i class="fas fa-user-circle"></i></div>
+        <div class="member-name">Alice Johnson</div>
+        <button class="member-role">Travel Consultant</button>
+    </div>
+    <div class="team-member">
+        <div class="icon"><i class="fas fa-user-circle"></i></div>
+        <div class="member-name">Mark Smith</div>
+        <button class="member-role">Tour Manager</button>
+    </div>
+    <div class="team-member">
+        <div class="icon"><i class="fas fa-user-circle"></i></div>
+        <div class="member-name">Emma Brown</div>
+        <button class="member-role">Customer Specialist</button>
+    </div>
+</div>
+   
     <div class="social-media-icons">
         <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <a href="https://x.com" target="_blank"><i class="fab fa-x"></i></a>
