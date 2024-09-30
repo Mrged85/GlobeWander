@@ -3,6 +3,8 @@
       {
         "id": 1,
         "name": "Australia",
+        "imageUrl":"./images/sidney.jpg",
+        "description":"A vibrant country known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge.",
         "cities": [
           {
             "name": "Sydney, Australia",
@@ -19,11 +21,13 @@
       {
         "id": 2,
         "name": "Japan",
+        "imageUrl":"./images/kyoto.jpg",
+        "description": "O Japão é um arquipélago na Ásia, conhecido por sua cultura rica, tecnologia avançada e paisagens deslumbrantes.",
         "cities": [
           {
             "name": "Tokyo, Japan",
             "imageUrl": "./images/tokyo.jpg",
-            "description": "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture."
+            "description": "Japan is an island nation in Asia, renowned for its rich culture, advanced technology, and stunning landscapes."
           },
           {
             "name": "Kyoto, Japan",
@@ -35,6 +39,8 @@
       {
         "id": 3,
         "name": "Brazil",
+        "imageUrl":"./images/riodejaneiro.jpg",
+        "description":"Brazil is the largest country in South America, famous for its vibrant culture, diverse ecosystems, and iconic landmarks like the Amazon rainforest and Christ the Redeemer statue.",
         "cities": [
           {
             "name": "Rio de Janeiro, Brazil",
